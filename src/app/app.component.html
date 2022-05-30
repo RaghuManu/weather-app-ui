@@ -1,0 +1,92 @@
+
+<!-- weather application temoplate starts -->
+<div class="container">
+  <!-- company logo starts -->
+  <div>
+    <span style="float: right;"><img src="../assets/teamAlphalogo.jpeg" width="150" height="100"></span>
+  </div>
+  <!-- company logo ends -->
+
+  <!-- location starts -->
+  <div class="text-center">
+    <span class="location"
+      >{{ location1 }}, {{ location2 }}, {{ location3 }}</span
+    >
+  </div>
+  <!-- location ends -->
+
+  <!-- current weather all details starts -->
+  <div class="current-weather-container">
+    <div class="row">
+
+      <!-- current weather temp and condition details starts -->
+
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-5">
+            <span>
+              <img
+                [src]="currentConditionPic"
+                class="current-weather-icon"
+                alt=""
+              />
+            </span>
+          </div>
+          <div class="col-md-7 current-weather-info">
+            <div class="temp-desc">{{ currentTemp }} f</div>
+            <div class="temp-desc">{{ currentCondition }}</div>
+          </div>
+        </div>
+
+         <!-- search weather starts -->
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Start Entering City Name"
+            #searchText
+          />
+          <div class="input-group-append">
+            <button (click)="getData(searchText.value)" class="btn btn-danger search-btn" type="button">
+              Search
+            </button>
+          </div>
+        </div>
+         <!-- search weather ends -->
+      </div>
+      <!-- current weather temp and condition details ends -->
+      
+      <!-- current location wind speed, preciptation and pressure starts -->
+      <div class="col-md-4 temp-detail">
+        <div>Wind: {{ currentWindSpeed }} Mph</div>
+        <div>Precip: {{ currentPrecip_in }} in</div>
+        <div>Pressure: {{ currentPressure_in }} in</div>
+      </div>
+       <!-- current location wind speed, preciptation and pressure ends -->
+    </div>
+  </div>
+ <!-- current weather all details ends -->
+
+
+ <!-- forecast details starts -->
+  <div>
+    <div class="row">
+      <div *ngFor="let forecast of weatherForeCast" class="col-md-3 forcast-weather-box">
+        <div>{{forecast?.date | date}}</div>
+        <div>
+          <img
+            [src]="forecast?.day.condition.icon"
+            class="forecast-weather-icon"
+            alt=""
+          />
+        </div>
+        <div>{{forecast.day.avgtemp_f}} f</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- forecast details ends starts -->
+</div>
+
+
+<!-- weather application temoplate starts -->
